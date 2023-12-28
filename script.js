@@ -1,96 +1,81 @@
-const display = document.getElementById('display');
+var screen=document.querySelector('#screen');
+var btn=document.querySelectorAll('.btn');
 
-function clearDisplay() {
-    display.value = '';
+/*============ For getting the value of btn, Here we use for loop ============*/
+for(item of btn)
+{
+    item.addEventListener('click',(e)=>{
+        btntext=e.target.innerText;
+
+        if(btntext =='×')
+        {
+            btntext= '*';
+        }
+
+        if(btntext=='÷')
+        {
+            btntext='/';
+        }
+        screen.value+=btntext;
+    });
 }
 
-function appendToDisplay(value) {
-    display.value += value;
+function sin()
+{
+    screen.value=Math.sin(screen.value);
 }
 
-function calculate() {
-    try {
-        display.value = eval(display.value);
-    } catch (e) {
-        alert('Invalid input');
-        clearDisplay();
+function cos()
+{
+    screen.value=Math.cos(screen.value);
+}
+
+function tan()
+{
+    screen.value=Math.tan(screen.value);
+}
+
+function pow()
+{
+    screen.value=Math.pow(screen.value,2);
+}
+
+function sqrt()
+{
+    screen.value=Math.sqrt(screen.value,2);
+}
+
+function log()
+{
+    screen.value=Math.log(screen.value);
+}
+
+function pi()
+{
+    screen.value= 3.14159265359;
+}
+
+function e()
+{
+    screen.value=2.71828182846;
+}
+
+function fact()
+{
+    var i, num, f;
+    f=1
+    num=screen.value;
+    for(i=1; i<=num; i++)
+    {
+        f=f*i;
     }
+
+    i=i-1;
+
+    screen.value=f;
 }
 
-let memoryValue = 0;
-
-function memoryClear() {
-    memoryValue = 0;
-}
-
-function memoryRecall() {
-    display.value = memoryValue;
-}
-
-function memoryAdd() {
-    memoryValue += parseFloat(display.value);
-}
-
-function memorySubtract() {
-    memoryValue -= parseFloat(display.value);
-}
-
-function piValue() {
-    display.value = Math.PI;
-}
-
-function sinFunction() {
-    display.value = Math.sin(parseFloat(display.value));
-}
-
-function cosFunction() {
-    display.value = Math.cos(parseFloat(display.value));
-}
-
-function tanFunction() {
-    display.value = Math.tan(parseFloat(display.value));
-}
-
-function arcsin() {
-    display.value = Math.asin(parseFloat(display.value));
-}
-
-function sinh() {
-    display.value = Math.sinh(parseFloat(display.value));
-}
-
-function cosh() {
-    display.value = Math.cosh(parseFloat(display.value));
-}
-
-function tanh() {
-    display.value = Math.tanh(parseFloat(display.value));
-}
-
-function log10() {
-    display.value = Math.log10(parseFloat(display.value));
-}
-
-function square() {
-    display.value = Math.pow(parseFloat(display.value), 2);
-}
-
-function squareRoot() {
-    display.value = Math.sqrt(parseFloat(display.value));
-}
-
-function logFunction() {
-    display.value = Math.log(parseFloat(display.value));
-}
-
-function eFunction() {
-    display.value = Math.E;
-}
-
-function toRadians(degrees) {
-    return degrees * (Math.PI / 180);
-}
-
-function toDegrees(radians) {
-    return radians * (180 / Math.PI);
+function backspc()
+{
+    screen.value=screen.value.substr(0,screen.value.length-1);
 }
